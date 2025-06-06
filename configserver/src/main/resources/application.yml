@@ -16,11 +16,6 @@ spring:
 #        native:
 #          search-locations: "classpath:/config"
 #          search-locations: "file:///Users/[path]/config"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
 
 
 management:
