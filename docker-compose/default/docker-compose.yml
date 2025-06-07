@@ -49,13 +49,37 @@ services:
       service:
         microservice-base-config
 
+  eurekaserver:
+    image: "zell1502/eurekaserver:s4"
+    container_name: eurekaserver-ms
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+
   accounts:
     image: "zell1502/accounts:s4"
     container_name: accounts-ms
     ports:
       - "8080:8080"
     depends_on:
+      configserver:
+        condition: service_healthy
       accountsdb:
+        condition: service_healthy
+      eurekaserver:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "accounts"
@@ -70,7 +94,11 @@ services:
     ports:
       - "8090:8090"
     depends_on:
+      configserver:
+        condition: service_healthy
       loansdb:
+        condition: service_healthy
+      eurekaserver:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "loans"
@@ -85,7 +113,11 @@ services:
     ports:
       - "9000:9000"
     depends_on:
+      configserver:
+        condition: service_healthy
       cardsdb:
+        condition: service_healthy
+      eurekaserver:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "cards"
