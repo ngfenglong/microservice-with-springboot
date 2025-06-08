@@ -11,7 +11,7 @@ management:
         include: "*"
     health:
       readiness-state:
-        enabled:true
+        enabled: true
       liveness-state:
         enabled: true
     endpoint:
