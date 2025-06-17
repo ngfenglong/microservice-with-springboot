@@ -22,7 +22,7 @@ public class SecurityConfig {
         serverHttpSecurity.authorizeExchange(exchanges -> exchanges.pathMatchers(HttpMethod.GET).permitAll()
                 .pathMatchers("/eazybank/accounts/**").hasRole("ACCOUNTS") /// use .hasRole() to athenticate by roles,
                 .pathMatchers("/eazybank/cards/**").authenticated()/// use .authenticated() allow all ROLES,
-                .pathMatchers("/eazybank/loans/**"))
+                .pathMatchers("/eazybank/loans/**").authenticated())
                 .oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec
                         .jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
 
