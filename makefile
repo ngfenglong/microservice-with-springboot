@@ -1,4 +1,4 @@
-version = s4make 
+version = s4
 MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 build-all: build-accounts build-configserver build-cards build-eurekaserver build-gatewayserver build-loans
@@ -32,3 +32,6 @@ deploy-all:
 
 run-default:
 	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose up
+
+remove-default:
+	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose down
