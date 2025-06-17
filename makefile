@@ -1,7 +1,7 @@
 version = s4
 MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-build-all: build-accounts build-configserver build-cards build-eurekaserver build-gatewayserver build-loans
+build-all: build-accounts build-configserver build-cards build-eurekaserver build-gatewayserver build-loans build-message
 
 build-accounts:
 	cd "$(MAKEFILE_DIR)/accounts" && mvn compile jib:dockerBuild
@@ -21,6 +21,9 @@ build-gatewayserver:
 build-loans:
 	cd $(MAKEFILE_DIR)/loans && mvn compile jib:dockerBuild
 
+build-message:
+	cd $(MAKEFILE_DIR)/message && mvn compile jib:dockerBuild
+
 
 deploy-all:
 	docker push docker.io/zell1502/accounts:${version}
@@ -29,6 +32,7 @@ deploy-all:
 	docker push docker.io/zell1502/eurekaserver:${version}
 	docker push docker.io/zell1502/gatewayserver:${version}
 	docker push docker.io/zell1502/loans:${version}
+	docker push docker.io/zell1502/message:${version}
 
 run-default:
 	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose up
