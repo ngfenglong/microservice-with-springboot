@@ -63,8 +63,8 @@ deploy-message:
 ################################################################################
 
 
-run-default:
+docker-up:
 	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose up
 
-remove-default:
+docker-down:
 	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose down
