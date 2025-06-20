@@ -68,3 +68,55 @@ docker-up:
 
 docker-down:
 	cd $(MAKEFILE_DIR)/docker-compose/default && docker compose down
+
+################################################################################
+# KUBERNETES SECTION
+################################################################################
+
+
+KUBE_DIR := $(MAKEFILE_DIR)/kubernetes
+
+# Individual apply commands
+kube-keycloak:
+	kubectl apply -f $(KUBE_DIR)/1_keycloak.yml
+
+kube-configmap:
+	kubectl apply -f $(KUBE_DIR)/2_configmaps.yaml
+
+kube-configserver:
+	kubectl apply -f $(KUBE_DIR)/3_configserver.yml
+
+kube-eurekaserver:
+	kubectl apply -f $(KUBE_DIR)/4_eurekaserver.yml
+
+kube-accounts:
+	kubectl apply -f $(KUBE_DIR)/5_accounts.yml
+
+kube-loans:
+	kubectl apply -f $(KUBE_DIR)/6_loans.yml
+
+kube-cards:
+	kubectl apply -f $(KUBE_DIR)/7_cards.yml
+
+kube-gateway:
+	kubectl apply -f $(KUBE_DIR)/8_gateway.yml
+
+kube-message:
+	kubectl apply -f $(KUBE_DIR)/9_message.yml
+
+# Apply all
+kube-up: kube-keycloak kube-configmap kube-configserver kube-eurekaserver kube-accounts kube-loans kube-cards kube-gateway kube-message
+
+
+# Delete all
+kube-down:
+	kubectl delete -f $(KUBE_DIR)/9_message.yml
+	kubectl delete -f $(KUBE_DIR)/8_gateway.yml
+	kubectl delete -f $(KUBE_DIR)/7_cards.yml
+	kubectl delete -f $(KUBE_DIR)/6_loans.yml
+	kubectl delete -f $(KUBE_DIR)/5_accounts.yml
+	kubectl delete -f $(KUBE_DIR)/4_eurekaserver.yml
+	kubectl delete -f $(KUBE_DIR)/3_configserver.yml
+	kubectl delete -f $(KUBE_DIR)/2_configmaps.yaml
+	kubectl delete -f $(KUBE_DIR)/1_keycloak.yml
+
