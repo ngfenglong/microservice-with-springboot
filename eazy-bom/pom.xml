@@ -17,10 +17,8 @@
         <developer/>
     </developers>
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <url>https://github.com/ngfenglong/microservice-with-springboot</url>
+
     </scm>
     <properties>
         <common-lib.version>1.0.0</common-lib.version>
@@ -37,12 +35,15 @@
         <jib.version>3.4.2</jib.version>
         <image.tag>s4</image.tag>
     </properties>
+    <modules>
+        <module>common</module>
+    </modules>
     <dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -76,6 +77,12 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
@@ -93,5 +100,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

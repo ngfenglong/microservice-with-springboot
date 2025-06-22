@@ -11,6 +11,7 @@
         <module name="gatewayserver" />
         <module name="configserver" />
         <module name="message" />
+        <module name="common" />
       </profile>
       <profile name="Annotation profile for loans" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -29,6 +30,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="accounts" options="" />
       <module name="cards" options="" />
+      <module name="common" options="" />
       <module name="configserver" options="" />
       <module name="eazy-bom" options="" />
       <module name="eurekaserver" options="" />
