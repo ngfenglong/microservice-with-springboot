@@ -11,7 +11,6 @@
         <module name="gatewayserver" />
         <module name="configserver" />
         <module name="message" />
-        <module name="eazy-bom" />
       </profile>
       <profile name="Annotation profile for loans" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -28,14 +27,14 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="accounts" options="-parameters" />
-      <module name="cards" options="-parameters" />
-      <module name="configserver" options="-parameters" />
-      <module name="eazy-bom" options="-parameters" />
-      <module name="eurekaserver" options="-parameters" />
-      <module name="gatewayserver" options="-parameters" />
-      <module name="loans" options="-parameters" />
-      <module name="message" options="-parameters" />
+      <module name="accounts" options="" />
+      <module name="cards" options="" />
+      <module name="configserver" options="" />
+      <module name="eazy-bom" options="" />
+      <module name="eurekaserver" options="" />
+      <module name="gatewayserver" options="" />
+      <module name="loans" options="" />
+      <module name="message" options="" />
     </option>
   </component>
 </project>
